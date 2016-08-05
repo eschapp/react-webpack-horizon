@@ -1,0 +1,48 @@
+{
+  "name": "react-webpack-horizon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm-run-all --parallel serve:dev start:dev",
+    "build": "webpack",
+    "start:dev": "hjs-dev-server",
+    "start:prod": "npm run schema:restore && npm run serve:express",
+    "schema:dump": "hz get-schema -o ./.hz/schema.toml",
+    "schema:restore": "hz set-schema ./.hz/schema.toml --connect $(./util/scripts/parseurl.sh $RETHINKDB_URL)",
+    "serve:dev": "hz serve --dev",
+    "serve:express": "node ./util/server/express.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jimthedev/react-webpack-horizon.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jimthedev/react-webpack-horizon/issues"
+  },
+  "homepage": "https://github.com/jimthedev/react-webpack-horizon#readme",
+  "dependencies": {
+    "@horizon/client": "^1.1.3",
+    "hjs-webpack": "^8.3.0",
+    "normalize.css": "^4.2.0",
+    "npm-run-all": "^2.3.0",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.13.2",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-react-hmre": "^1.1.1",
+    "css-loader": "^0.23.1",
+    "file-loader": "^0.9.0",
+    "postcss-loader": "^0.9.1",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7"
+  }
+}
