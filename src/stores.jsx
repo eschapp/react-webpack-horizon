@@ -5,7 +5,7 @@ import Horizon from '@horizon/client';
 const horizon = Horizon({
   secure: false,
   // host: 'localhost:8181'
-  host: 'localhost:80'
+  host: window.location.hostname + ':80'
 });
 
 // Any number of stores that you like
