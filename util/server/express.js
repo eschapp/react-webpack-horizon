@@ -7,11 +7,10 @@ const horizon = require('@horizon/server');
 
 const app = express();
 
-app.use(express.static(path.resolve(__dirname + '/../../dist')));
+app.use(express.static(path.resolve(__dirname + '/../../public')));
 
-// When / is called, return /dist/index.html
 app.get('/', function(req, res) {
-  res.sendFile(path.resolve(__dirname + '/../../dist/index.html'));
+  res.sendFile(path.resolve(__dirname + '/../../public/index.html'));
 });
 const httpServer = app.listen(process.env.PORT);
 
