@@ -7,11 +7,11 @@ const horizon = require('@horizon/server');
 
 const app = express();
 
-app.use(express.static(__dirname + '/../../dist'));
+app.use(express.static(path.resolve(__dirname + '/../../dist')));
 
 // When / is called, return /dist/index.html
 app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/../../dist/index.html');
+  res.sendFile(path.resolve(__dirname + '/../../dist/index.html'));
 });
 const httpServer = app.listen(process.env.PORT);
 
@@ -34,4 +34,4 @@ const options = {
 console.log('starting horizon with ' + options);
 const horizonServer = horizon(httpServer, options);
 
-console.log('Listening on port 8181.');
+console.log('Listening on port ' + process.env.PORT);
