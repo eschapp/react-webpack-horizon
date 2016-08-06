@@ -1,10 +1,10 @@
 // npm install --save @horizon/client
 import Horizon from '@horizon/client';
 
-// Creat an instance of Horizon, passing a config object
+// Create an instance of Horizon, passing a config object
 const horizon = Horizon({
   secure: false,
-  host: 'localhost:8181'
+  // host: 'localhost:8181'
 });
 
 // Any number of stores that you like
