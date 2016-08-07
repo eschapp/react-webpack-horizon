@@ -5,15 +5,20 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm-run-all --parallel serve:dev start:dev",
+
+    "start": "npm-run-all --parallel serve:dev:server serve:dev:client",
+    "start:prod": "npm run schema:restore && npm run serve:prod",
+
     "build:dev": "webpack",
     "build:prod": "NODE_ENV=production webpack",
-    "start:dev": "hjs-dev-server",
-    "start:prod": "npm run schema:restore && npm run serve:express",
+
+    "serve:dev:client": "hjs-dev-server",
+    "serve:dev:server": "hz serve --dev",
+
     "schema:dump": "hz get-schema -o ./.hz/schema.toml",
     "schema:restore": "hz set-schema ./.hz/schema.toml --connect $(./util/scripts/parseurl.sh $RETHINKDB_URL)",
-    "serve:dev": "hz serve --dev",
-    "serve:express": "node ./util/server/express.js"
+
+    "serve:prod": "node ./util/server/express.js"
   },
   "repository": {
     "type": "git",
