@@ -17,7 +17,10 @@ const httpServer = app.listen(process.env.PORT);
 if(!process.env.RETHINKDB_URL) {
   throw 'RETHINKDB_URL environment variable must be defined.'
 }
-
+/*
+Transform: http://myhost.com:28015
+Into:      myhost.com:28015
+*/
 var urlRethinkDB = url.parse(process.env.RETHINKDB_URL);
 
 const options = {

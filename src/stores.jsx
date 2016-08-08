@@ -7,13 +7,10 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   port = 8181;
 }
-
 const host = window.location.hostname + ':' + port;
-console.log('host is ', host);
 // Create an instance of Horizon, passing a config object
 const horizon = Horizon({
   secure: false,
-  // host: 'localhost:8181'
   host: host
 });
 
