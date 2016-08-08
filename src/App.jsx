@@ -12,19 +12,23 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      messageText:''
+      author: '',
+      message:'',
     }
   }
+  handleAuthorChange(e) {
+    this.setState({author: e.target.value});
+  }
   handleMessageChange(e) {
-    this.setState({messageText: e.target.value});
+    this.setState({message: e.target.value});
   }
   handleAddMessageClick() {
     var now = new Date();
     chat.store({
-      author: 'Jim Cummins',
-      text: this.state.messageText,
+      author: this.state.author,
+      text: this.state.message,
       datetime: now.getTime()
-    })
+    });
   }
   handleAddFileClick() {
     var now = new Date();
@@ -43,7 +47,8 @@ class App extends Component {
     return (
       <div>
         <h1>Welcome</h1>
-        <input type="text" onChange={this.handleMessageChange.bind(this)} />
+        <input type="text" placeholder="Author" onChange={this.handleAuthorChange.bind(this)} />
+        <input type="text" placeholder="Message" onChange={this.handleMessageChange.bind(this)} />
         <input type="button" value="Add message" onClick={this.handleAddMessageClick.bind(this)} />
         <input type="button" value="Clear messages" onClick={this.handleClearMessageClick.bind(this)} />
         <MessageList chat={chat} />
