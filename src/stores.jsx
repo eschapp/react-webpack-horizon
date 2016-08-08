@@ -10,6 +10,7 @@ if (process.env.NODE_ENV === 'production') {
   port = 8181;
   secure = false;
 }
+
 const host = window.location.hostname + ':' + port;
 // Create an instance of Horizon, passing a config object
 const horizon = Horizon({
