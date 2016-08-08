@@ -13,7 +13,7 @@
     "serve:dev:client": "hjs-dev-server",
     "serve:dev:server": "hz serve --dev",
     "serve:prod": "node ./util/server/express.js",
-    "schema:commit": "echo \"Commiting updated schema\" && git add ./.hz/schema.toml || true && git commit -m \"Updated DB Schema\" || true",
+    "schema:commit": "git add ./.hz/schema.toml >/dev/null || true && git commit -m \"Updated DB Schema\" ./.hz/schema.toml >/dev/null || true",
     "schema:dump": "hz get-schema -o ./.hz/schema.toml",
     "schema:restore": "hz set-schema ./.hz/schema.toml --connect $(./util/scripts/parseurl.sh $RETHINKDB_URL)"
   },
