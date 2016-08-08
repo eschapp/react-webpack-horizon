@@ -29,6 +29,9 @@ class App extends Component {
       text: this.state.message,
       datetime: now.getTime()
     });
+    this.setState({
+      message:''
+    })
   }
   handleAddFileClick() {
     var now = new Date();
