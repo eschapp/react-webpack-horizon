@@ -26,9 +26,12 @@ var urlRethinkDB = url.parse(process.env.RETHINKDB_URL);
 const options = {
   auth: {
     token_secret: 'my_super_secret_secret',
-    allow_anonymous: true,
-    allow_unauthenticated: true
+    allow_anonymous: true, // harden, horizon
+    allow_unauthenticated: true, // harden, horizon
+
   },
+  auto_create_collection: true, // TODO: harden, dokku/rethink
+  auto_create_index: true, // TODO: harden, dokku/rethink
   permissions: false,
   project_name: 'react_webpack_horizon',
   rdb_host: urlRethinkDB.hostname,
