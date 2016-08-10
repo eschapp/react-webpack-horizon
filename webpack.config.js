@@ -16,7 +16,18 @@ var config = getConfig({
   // get a fresh folder. Usually you want this
   // but since it's destructive we make it
   // false by default
-  clearBeforeBuild: '!(images|favicon.ico)'
+  clearBeforeBuild: '!(images|favicon.ico)',
+
+  html: function (context) {
+    console.log(context.defaultTemplate({
+      head: '<base href="/" />'
+    }));
+    return {
+      'index.html': context.defaultTemplate({
+        head: '<base href="/" />'
+      })
+    }
+  }
 });
 
 config.plugins.push(
