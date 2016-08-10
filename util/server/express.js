@@ -9,7 +9,7 @@ const app = express();
 
 app.use(express.static(path.resolve(__dirname + '/../../public')));
 
-app.get('/', function(req, res) {
+app.use(function(req, res) {
   res.sendFile(path.resolve(__dirname + '/../../public/index.html'));
 });
 const httpServer = app.listen(process.env.PORT);
