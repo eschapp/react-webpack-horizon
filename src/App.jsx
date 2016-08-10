@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import {Router, Route, browserHistory} from 'react-router';
 import globalStyles from './assets/styles/global.css';
 // import normalizeStyles from 'normalize.css';
 
@@ -64,7 +65,17 @@ class App extends Component {
   }
 }
 
+// ReactDOM.render(
+//   <App />,
+//   document.getElementById('root')
+// );
+
 ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+    <Router history={browserHistory}>
+      <Route path="/" component={App} />
+      <Route path="/room/" component={App} />
+      {/* <Route path="/room/:roomId" component={App} /> */}
+      <Route path="*" component={App} />
+    </Router>,
+    document.getElementById('root')
+  )
